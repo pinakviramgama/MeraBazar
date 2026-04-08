@@ -17,15 +17,15 @@ export const generateEmbedding = async (imageBuffer) => {
       );
     }
 
-    // ✅ Create temp file
+    //  Create temp file
     const tempPath = path.join(__dirname, "temp-image.jpg");
 
     fs.writeFileSync(tempPath, imageBuffer);
 
-    // ✅ Pass file path instead of buffer
+    //  Pass file path instead of buffer
     const output = await extractor(tempPath);
 
-    // ✅ Delete temp file after processing
+    // Delete temp file after processing
     fs.unlinkSync(tempPath);
 
     const embedding = Array.from(output.data);
